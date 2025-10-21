@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Bookings | The Dojo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+    crossorigin="anonymous"
+  />
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 200px;
+      background-color: #f0f0f0;
+      padding-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .sidebar button {
+      width: 150px;
+      padding: 15px;
+      margin: 10px 0;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      background-color: #000000;
+      color: white;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar button:hover {
+      background-color: #ec3847;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 30px;
+      color: #333;
+      text-decoration: underline;
+    }
+
+    .booking-card {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #f9f9f9;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+
+    .booking-card p {
+      font-size: 18px;
+      margin: 10px 0;
+      color: #444;
+    }
+
+    .no-booking {
+      font-size: 20px;
+      color: #777;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <a href="1Index.html" style="text-decoration: none;"><button>Home</button></a>
+    <a href="2Events.html" style="text-decoration: none;"><button>Events</button></a>
+    <a href="3Contact.html" style="text-decoration: none;"><button>Contact</button></a>
+    <a href="4About.html" style="text-decoration: none;"><button>About</button></a>
+    <a href="5Support.html" style="text-decoration: none;"><button>Support</button></a>
+    <a href="6Book.html" style="text-decoration: none;"><button>Event Booking</button></a>
+    <a href="8MyBookings.html" style="text-decoration: none;"><button>My Bookings</button></a>
+    <a href="9Admin.html" style="text-decoration: none;"><button>Admin</button></a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>My Bookings</h1>
+    <div id="bookingContainer"></div>
+  </div>
+
+  <script>
+    const email = localStorage.getItem("bookingEmail");
+    const bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
+    const container = document.getElementById("bookingContainer");
+
+    if (email && bookings.length > 0) {
+      // Filter bookings for this user's email
+      const userBookings = bookings.filter(b => b.email === email);
+
+      if (userBookings.length > 0) {
+        container.innerHTML = userBookings.map(b => `
+          <div class="booking-card">
+            <p><strong>Email:</strong> ${b.email}</p>
+            <p><strong>Event:</strong> ${b.event}</p>
+            <p><strong>Date:</strong> ${b.date}</p>
+            <p><strong>Time:</strong> ${b.time}</p>
+            <p><strong>Location:</strong> ${b.location}</p>
+          </div>
+        `).join('');
+      } else {
+        container.innerHTML = `<p class="no-booking">No bookings found for your email. Please book an event first.</p>`;
+      }
+    } else {
+      container.innerHTML = `<p class="no-booking">No bookings found. Please book an event first.</p>`;
+    }
+  </script>
+</body>
+</html>

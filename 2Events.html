@@ -1,138 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>The Dojo</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <title>Events | The Dojo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+    crossorigin="anonymous"
+  />
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
-            display: flex;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        /* Sidebar for navigation buttons */
-        .sidebar {
-            width: 200px;
-            background-color: #f0f0f0;
-            padding-top: 50px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      display: flex;
+    }
 
-        .sidebar button {
-            width: 150px;
-            padding: 15px;
-            margin: 10px 0;
-            font-size: 18px;
-            cursor: pointer;
-            border: none;
-            background-color: #000000;
-            color: white;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
-        }
+    /* Sidebar for navigation buttons */
+    .sidebar {
+      width: 200px;
+      background-color: #f0f0f0;
+      padding-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        .sidebar button:hover {
-            background-color: #ec3847;
-        }
+    .sidebar button {
+      width: 150px;
+      padding: 15px;
+      margin: 10px 0;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      background-color: #000000;
+      color: white;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
 
-        /* Main content area */
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            padding: 40px;
-            text-align: center;
-        }
+    .sidebar button:hover {
+      background-color: #ec3847;
+    }
 
-        h1 {
-            font-size: 64px;
-            text-decoration: underline;
-            margin-top: 0;
-            margin-bottom: 20px;
-            color: #333;
-        }
+    /* Main content area */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 40px;
+      text-align: center;
+    }
 
-        .events-section {
-            max-width: 800px;
-            margin-bottom: 40px;
-            font-size: 18px;
-            line-height: 1.6;
-            color: #444;
-        }
+    h1 {
+      font-size: 64px;
+      text-decoration: underline;
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: #333;
+    }
 
-        .event {
-            background-color: #f9f9f9;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            text-align: left;
-        }
+    .events-section {
+      max-width: 800px;
+      margin-bottom: 30px;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #444;
+    }
 
-        .event h3 {
-            margin-top: 0;
-            color: #2e7d32;
-        }
+    .event {
+      background-color: #f9f9f9;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 20px;
-        }
-    </style>
+    .event h3 {
+      margin-top: 0;
+      color: #2e7d32;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 30px;
+    }
+
+    .my-bookings-button {
+      margin-top: 10px;
+      margin-bottom: 30px;
+      padding: 12px 25px;
+      font-size: 18px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .my-bookings-button:hover {
+      background-color: #0056b3;
+    }
+
+    .book-now-button {
+      margin-top: 15px;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Sidebar navigation -->
-    <div class="sidebar">
-        <a href="1Index.html" style="text-decoration: none;"> <button>Home</button> </a>
-        <a href="2Events.html" style="text-decoration: none;">  <button>Events</button>  </a>
-        <a href="3Contact.html" style="text-decoration: none;">  <button>Contact</button>  </a>
-        <a href="4About.html" style="text-decoration: none;">  <button>About</button>  </a>
-        <a href="5Support.html" style="text-decoration: none;">  <button>Support</button>  </a>
+  <!-- Sidebar navigation -->
+  <div class="sidebar">
+    <a href="1Index.html" style="text-decoration: none;"><button>Home</button></a>
+    <a href="2Events.html" style="text-decoration: none;"><button>Events</button></a>
+    <a href="3Contact.html" style="text-decoration: none;"><button>Contact</button></a>
+    <a href="4About.html" style="text-decoration: none;"><button>About</button></a>
+    <a href="5Support.html" style="text-decoration: none;"><button>Support</button></a>
+    <a href="6Book.html" style="text-decoration: none;"><button>Event Booking</button></a>
+    <a href="8MyBookings.html" style="text-decoration: none;"><button>My Bookings</button></a>
+    <a href="9Admin.html" style="text-decoration: none;"><button>Admin</button></a>
+  </div>
+
+  <!-- Main content -->
+  <div class="main-content">
+    <h1>Events</h1>
+
+    <div class="events-section">
+      <div class="event">
+        <h3>💻 Intro to Coding Workshop</h3>
+        <p><strong>Date:</strong> October 21, 2025<br>
+          <strong>Time:</strong> 1:00 PM – 3:00 PM<br>
+          <strong>Location:</strong> The Dojo Learning Hub</p>
+        <p>A beginner-friendly session. Learn how to write your first lines of code using block-based programming. No experience needed!</p>
+        <a href="6Book.html" class="btn btn-success book-now-button">Book Now</a>
+      </div>
+
+      <div class="event">
+        <h3>🌐 Kids Cyber Safety Day</h3>
+        <p><strong>Date:</strong> November 4, 2025<br>
+          <strong>Time:</strong> 10:30 AM – 12:00 PM<br>
+          <strong>Location:</strong> The Dojo Learning Hub</p>
+        <p>Interactive lessons and activities that teach you how to stay safe online. Includes games, quizzes, and tips on protecting personal information.</p>
+        <a href="6Book.html" class="btn btn-success book-now-button">Book Now</a>
+      </div>
+
+      <div class="event">
+        <h3>🚀 Build Your First Website</h3>
+        <p><strong>Date:</strong> December 2, 2025<br>
+          <strong>Time:</strong> 4:00 PM – 6:30 PM<br>
+          <strong>Location:</strong> The Dojo Learning Hub</p>
+        <p>Learn the basics of HTML and CSS and publish your very own webpage by the end of the session. All materials provided, just bring curiosity!</p>
+        <a href="6Book.html" class="btn btn-success book-now-button">Book Now</a>
+      </div>
     </div>
 
-    <!-- Main content -->
-    <div class="main-content">
-        <h1>Events</h1>
+    <!-- My Bookings Button -->
+    <a class="my-bookings-button" href="8MyBookings.html">My Bookings</a>
 
-        <div class="events-section">
-            <div class="event">
-                <h3>💻 Intro to Coding Workshop</h3>
-                <p><strong>Date:</strong> October 21, 2025<br>
-                   <strong>Time:</strong> 1:00 PM – 3:00 PM<br>
-                   <strong>Location:</strong> Code Dojo Online (Zoom)</p>
-                <p>A beginner-friendly session for kids aged 8–12. Learn how to write your first lines of code using block-based programming. No experience needed!</p>
-            </div>
+    <!-- Image -->
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa35Zdne3us5v9Aj1aRcne5luJ2o70Uq_2yw&s" alt="Dojo Image" />
+  </div>
 
-            <div class="event">
-                <h3>🌐 Kids Cyber Safety Day</h3>
-                <p><strong>Date:</strong> November 4, 2025<br>
-                   <strong>Time:</strong> 10:30 AM – 12:00 PM<br>
-                   <strong>Location:</strong> The Dojo Learning Hub</p>
-                <p>Interactive lessons and activities that teach kids how to stay safe online. Includes games, quizzes, and tips on protecting personal information.</p>
-            </div>
-
-            <div class="event">
-                <h3>🚀 Build Your First Website</h3>
-                <p><strong>Date:</strong> December 2, 2025<br>
-                   <strong>Time:</strong> 4:00 PM – 6:30 PM<br>
-                   <strong>Instructor:</strong> Dev Mentor Alex T.</p>
-                <p>Kids ages 10–16 will learn the basics of HTML and CSS and publish their very own webpage by the end of the session. All materials provided—just bring curiosity!</p>
-            </div>
-        </div>
-
-        <img src="https://www.publicdomainpictures.net/pictures/320000/velka/kids-learning-on-computer.jpg" alt="Kids learning on computers">
-    </div>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
 </body>
 </html>
